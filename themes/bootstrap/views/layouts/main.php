@@ -1,3 +1,4 @@
+<?php use Yii; ?>
 <html lang="en" class="gr__getbootstrap_com"><head>
     <meta charset="utf-8">
     <title><?php echo CHtml::encode($this->pageTitle); ?></title>
@@ -95,7 +96,7 @@
           ================================================== -->
           <div class="span8 content-right">
              <img src="<?php echo Yii::app()->theme->baseUrl; ?>/img/newsbanner.png" alt="">
-             <p>Content of nes feed</p>
+             <p>Content of news feed</p>
           </div>
 
       </div>

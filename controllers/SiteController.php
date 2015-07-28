@@ -33,7 +33,18 @@ class SiteController extends Controller {
         $content = $connection->get("account/verify_credentials");
         $trends = $connection->get("trends/place", array("id" => 1225448));
         $query = $trends[0]->trends;
-        $rss = $this->rssCompiler(substr($query[0]->name, 1));
+        $rss = $this->rssCompiler(substr($query[2]->name, 1));
+        return $this->render('index', [
+                    "news" => $rss,
+        ]);
+    }
+
+    public function actionNews() {
+        $connection = new TwitterOAuth(CONSUMER_KEY, CONSUMER_SECRET, ACCESS_TOKEN, ACCESS_SECRET);
+        $content = $connection->get("account/verify_credentials");
+        $trends = $connection->get("trends/place", array("id" => 1225448));
+        $query = $trends[0]->trends;
+        $rss = $this->rssCompiler(substr($query[2]->name, 1));
         return $this->render('index', [
                     "trends" => $rss,
                     "rss" => $rss,
@@ -50,18 +61,10 @@ class SiteController extends Controller {
         return $cUrl->response;
     }
 
-    public function actionAll() {
-        $db = new Connection(Yii::$app->db);
-        $posts = $db->createCommand('SELECT * FROM `discuss` ORDER BY `id` ASC LIMIT 100')
-                ->queryAll();
-        return json_encode($posts);
+    public function twitterCompiler($query) {
+        $connection = new TwitterOAuth(CONSUMER_KEY, CONSUMER_SECRET, ACCESS_TOKEN, ACCESS_SECRET);
+        $content = $connection->get("account/verify_credentials");
+        $trends = $connection->get("trends/place", array("q" => $query));
+        return $cUrl->response;
     }
-
-    public function actionGet($id) {
-        $db = new Connection(Yii::$app->db);
-        $posts = $db->createCommand("SELECT * FROM `discuss` ORDER BY `id` ASC LIMIT 100 OFFSET $id")
-                ->queryAll();
-        return json_encode($posts);
-    }
-
 }

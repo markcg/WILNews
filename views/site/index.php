@@ -1,35 +1,34 @@
-<?php
-/* @var $this yii\web\View */
-$this->title = 'My Yii Application';
-?>
-<script src="/js/system.js" type="text/javascript"></script>
-<div>
-    <label>Chat</label>
-    <div id="chat_box" class="col-md-4" style="width: 300px; height: 200px;border: solid 1px black;overflow-y: scroll;">
+<div class="container-fluid">
+    <div class="row">
+
+        <div class="span4 content-left">
+
+            <!-- /WEATER
+            ================================================== -->
+            <div class="row">
+                <img src="/img/weatherbanner.png" alt="">
+                <p>Content of weather</p>
+            </div>
+
+            <!-- TWITTER
+            ================================================== -->
+            <div class="row">
+                <img src="/img/twitterbanner.png" alt="">
+                <p>Content of twiiter</p>
+            </div>
+        </div><!-- /.span4 -->
+
+
+        <!-- NEWS FEEDS 
+        ================================================== -->
+        <div class="span8 content-right">
+            <div><img src="/img/newsbanner.png" alt=""></div>
+            <div id="newsBox">
+                <?php foreach ($news["item"] as $new) { ?>
+                    <div><?php echo $new->description; ?></div>
+                <?php } ?>
+            </div>
+        </div>
 
     </div>
-    <input type="text" id="chat">
-</div>
-<div>
-    <label>Twitter</label>
-    <div id="twitter">
-        <?php
-        foreach ($trends->channel->item as $trend) {
-            echo $trend->description;
-        }
-        ?>
-    </div>
-</div>
-<div>
-    <label>News</label>
-    <div id="News"></div>
-</div>
-<div>
-    <label>Chat</label>
-    <div id="Chat"></div>
-</div>
-<script>
-    $(document).ready(function () {
-        wilnewsSystem.initialize();
-    });
-</script>
+</div><!-- /.container -->

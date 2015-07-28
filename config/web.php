@@ -44,8 +44,10 @@ $config = [
             'enableStrictParsing' => false,
             'rules' => [
                 '/' => 'site/index',
-                '/api/chat/get/<id:\d+>' => 'site/get',
-                '/api/chat/get/all' => 'site/all',
+                '/api/news/get/<id:\d+>' => 'site/get',
+                '/api/news/all' => 'site/all',
+                '/api/chat/get/<id:\d+>' => 'discuss/get',
+                '/api/chat/get/all' => 'discuss/all',
             ],
         ],
     ],
