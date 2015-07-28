@@ -23,7 +23,8 @@ AppAsset::register($this);
         <!-- Le styles -->
         <link href="/css/bootstrap.css" rel="stylesheet">
         <link href="/css/bootstrap-responsive.css" rel="stylesheet">
-
+        <link href="/css/site.css" rel="stylesheet" type="text/css"/>
+        <link href="/css/template.css" rel="stylesheet" type="text/css"/>
         <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
         <!--[if lt IE 9]>
           <script src="../assets/js/html5shiv.js"></script>
@@ -36,7 +37,7 @@ AppAsset::register($this);
         <link rel="apple-touch-icon-precomposed" href="/ico/apple-touch-icon-57-precomposed.png">
         <link rel="shortcut icon" href="/ico/favicon.png">
         <style id="holderjs-style" type="text/css">.holderjs-fluid {font-size:16px;font-weight:bold;text-align:center;font-family:sans-serif;margin:0}</style>
-
+        <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
     </head>
 
     <body>
@@ -53,10 +54,10 @@ AppAsset::register($this);
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="brand" href="#">WIL NEWS</a>
+                    <a class="brand" href="/">WIL NEWS</a>
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="#">MAIN</a></li>
-                        <li><a href="#board">BOARD</a></li>
+                        <li class="active"><a href="/">MAIN</a></li>
+                        <li><a href="/board">BOARD</a></li>
                     </ul>               
                 </div><!--/.nav-collapse -->
             </div><!-- /.navbar-inner -->
@@ -99,7 +100,6 @@ AppAsset::register($this);
 <!-- Le javascript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
-<script src="/js/jquery.js"></script>
 <script>
     !function ($) {
         $(function () {

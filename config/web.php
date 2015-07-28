@@ -44,12 +44,18 @@ $config = [
             'enableStrictParsing' => false,
             'rules' => [
                 '/' => 'site/index',
-                '/api/news/get/<id:\d+>' => 'site/get',
-                '/api/news/all' => 'site/all',
+                '/board' => 'discuss/index',
+                '/api/news/get' => 'site/news',
+                '/api/trend/get' => 'site/trends',
+                '/api/tweet/get' => 'site/tweets',
+                '/api/chat/post' => 'discuss/add',
                 '/api/chat/get/<id:\d+>' => 'discuss/get',
                 '/api/chat/get/all' => 'discuss/all',
             ],
         ],
+        'request' => array(
+            'enableCsrfValidation' => false,
+        ),
     ],
     'params' => $params,
 ];

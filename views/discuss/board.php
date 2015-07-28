@@ -40,19 +40,11 @@
             <!-- NEWS FEEDS 
 ================================================== -->
             <div class="content-right">
-                <div style="text-align: center;"><img src="/img/newsbanner.png" alt=""></div>
-                <div id="newsBox">
-                    <?php
-                    if (empty($news->channel->item)) {
-                        echo "No result found";
-                    } else {
-                        foreach ($news->channel->item as $new) {
-                            ?>
-                            <div><?php echo $new->description; ?></div>
-                            <?php
-                        }
-                    }
-                    ?>
+                <div style="text-align: center;font-size: 30px;padding: 10px 0;">CHAT</div>
+                <div>
+                    <div style="text-align: center;"><input type="text" id="inputBox" size="255"></div>
+                    <div id="chatBox">
+                    </div>
                 </div>
             </div>
         </div>
@@ -61,5 +53,6 @@
 <script>
     $(document).ready(function () {
         wilnewsSystem.initialize();
+        wilnewsSystem.startChat();
     });
 </script>
