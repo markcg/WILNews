@@ -38,6 +38,16 @@ $config = [
             ],
         ],
         'db' => require(__DIR__ . '/db.php'),
+        'urlManager' => [
+            'enablePrettyUrl' => true,
+            'showScriptName' => false,
+            'enableStrictParsing' => false,
+            'rules' => [
+                '/' => 'site/index',
+                '/api/chat/get/<id:\d+>' => 'site/get',
+                '/api/chat/get/all' => 'site/all',
+            ],
+        ],
     ],
     'params' => $params,
 ];
