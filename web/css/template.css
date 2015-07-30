@@ -11,7 +11,10 @@ and open the template in the editor.
 .fl-right{float: right;}
 .inline-box{display: inline-block;}
 .full-width{width: 100%;}
-.side-bar{width: 400px;padding-right: 10px;}
-.news-bar{text-align: left;}
+.side-bar{width: 520px;padding-right: 10px;}
+.news-bar{text-align: left; padding-left: 550px;}
+.content-right{padding-top: 25px;}
 .tweet{padding: 5px 0;}
-#weather{overflow-x: scroll;}
+.tweet-link{cursor: pointer;}
+//#weather{overflow-x: scroll
+#newsBox{overflow-y: scroll;}

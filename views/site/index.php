@@ -8,6 +8,7 @@
             ================================================== -->
             <div><img src="/img/weatherbanner.png" alt=""></div>
             <div id="weather"></div>
+            <div style="text-align: center;"><input type="text" name="city" placeholder="Search for city weather"></div>
             <div><img src="/img/twitterbanner.png" alt=""></div>
             <div class="text-left" style="padding: 5px 0;border-bottom: solid 1px black;">
                 <?php
@@ -16,7 +17,7 @@
                 } else {
                     foreach ($trends[0]->trends as $trend) {
                         ?>
-                        <a class="tweet-link" style="padding: 0 5px;" data-tweet="<?php echo $trend->name ?>"><?php echo $trend->name ?></a> 
+                        <a class="tweet-link" style="padding: 0 5px; cursor: pointer;" data-tweet="<?php echo $trend->name ?>"><?php echo $trend->name ?></a> 
                         <?php
                     }
                 }
@@ -36,12 +37,12 @@
                 ?>
             </div>
         </div>
-        <div class="news-bar full-width">
+        <div class="news-bar">
             <!-- NEWS FEEDS 
 ================================================== -->
             <div class="content-right">
                 <div style="text-align: center;"><img src="/img/newsbanner.png" alt=""></div>
-                <div id="newsBox">
+                <div id="newsBox"style='border-radius: 6px; background-color: #EEE; color: inherit; padding: 15px; margin-top: 15px;'>
                     <?php
                     if (empty($news->channel->item)) {
                         echo "No result found";

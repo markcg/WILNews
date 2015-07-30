@@ -38,6 +38,7 @@ AppAsset::register($this);
         <link rel="shortcut icon" href="/ico/favicon.png">
         <style id="holderjs-style" type="text/css">.holderjs-fluid {font-size:16px;font-weight:bold;text-align:center;font-family:sans-serif;margin:0}</style>
         <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+        <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script> 
     </head>
 
     <body>
@@ -71,11 +72,12 @@ AppAsset::register($this);
     ================================================== -->
     <div id="myCarousel" class="carousel slide" style="margin: 0;">
         <div class="item active">
-            <img src="/img/logo.png" alt="">
+            <img src="/img/header.jpg" alt="">
             <div class="container header-container">
                 <!-- LOGO -->
                 <h1>WIL NEWS.</h1>
-                <p>A real‐time weather forecasting, fetch tweets from Twitter of Hashtag or Trends to display as twitter feed, and provide news feed from all thai news.</p>
+                <p>A real‐time weather forecasting, fetch tweets from Twitter of Hashtags or Trends </P
+                <p>to display as twitter feed, and provide news feed that related to twitter.</p>
             </div><!-- LOGO -->
         </div>
     </div>
@@ -94,7 +96,7 @@ AppAsset::register($this);
 <footer>
     <p><font size="3px">©</font> 2015 WIL NEWS Company, Inc.</p>
     <p>WIL Project,College of Art, Media, and technology.</p>
-    <p><a herf="#">Thairath</a> · <a herf="#">Dailynews</a> · <a herf="#">Thai PBS</a> · <a herf="#">Sanook news</a> · <a herf="#">Komchadluek online</a> · <img src="/img/rss-round.png" height="25px" width="25px"></p>
+    <p>552115047 · 552115058 · 552115060 · 552115078</p>
 </footer>
 
 <!-- Le javascript

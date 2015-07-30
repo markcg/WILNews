@@ -33,7 +33,7 @@ class SiteController extends Controller {
         $connection = new TwitterOAuth(SiteController::CONSUMER_KEY, SiteController::CONSUMER_SECRET, SiteController::ACCESS_TOKEN, SiteController::ACCESS_SECRET);
         $content = $connection->get("account/verify_credentials");
         $trends = $connection->get("trends/place", array("id" => SiteController::COUNTRY));
-        $query = $trends[0]->trends;
+        $query = (is_array($trends) ? $trends[0]->trends : $query = $trends->trends);
         $hashtag = "";
         if ($query[0]->name[0] == "#") {
             $hashtag = substr($query[0]->name, 1);

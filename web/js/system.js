@@ -1,3 +1,4 @@
+var geocoder;
 var wilnewsSystem = {
     interval: 5000,
     chatBox: '#chatBox',
@@ -15,8 +16,14 @@ var wilnewsSystem = {
             wilnewsSystem.getTweet($(this).data().tweet);
             wilnewsSystem.getNews($(this).data().tweet);
         });
+        $("[name = city]").bind('keyup', function (e) {
+            if (e.keyCode === 13) { // 13 is enter key
+                cityToGeocoding();
+            }
+        });
         getLocation();
-        addWeather();
+        addWeather(wilnewsSystem.coordinate.lat, wilnewsSystem.coordinate.lng);
+        geocoder = new google.maps.Geocoder();
     },
     startChat: function () {
         $.ajax({
@@ -129,10 +136,24 @@ function showPosition(position) {
     wilnewsSystem.coordinate.lat = position.coords.latitude;
     wilnewsSystem.coordinate.lng = position.coords.longitude;
 }
-function addWeather() {
+function addWeather(lat, lng) {
     $('#weather').append('<div style="width:500px;">'
             + '<iframe id="forecast_embed" '
             + 'type="text/html" frameborder="0" height="245" width="500" '
-            + 'src="http://forecast.io/embed/#lat=' + wilnewsSystem.coordinate.lat + '&lon=' + wilnewsSystem.coordinate.lng + '&color=#00aaff&font=Georgia&units=uk">'
+            + 'src="http://forecast.io/embed/#lat=' + lat + '&lon=' + lng + '&color=#00aaff&font=Georgia&units=uk">'
             + '</iframe></div>');
+}
+function cityToGeocoding() {
+    $.ajax({
+        url: "https://maps.googleapis.com/maps/api/geocode/json",
+        method: "GET",
+        data: {
+            // key: "AIzaSyDgGc14rR0B2tGXDYt69ly9IMsWvIw9SCs",
+            address: $('[name = city]').val()
+        },
+    }).done(function (data) {
+        //console.log(data.results[0]);
+        $('#weather').empty();
+        addWeather(data.results[0].geometry.location.lat, data.results[0].geometry.location.lng);
+    });
 }
