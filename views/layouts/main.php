@@ -57,7 +57,7 @@ AppAsset::register($this);
                     </button>
                     <a class="brand" href="/">WIL NEWS</a>
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="/">MAIN</a></li>
+                        <li><a href="/">MAIN</a></li>
                         <li><a href="/board">BOARD</a></li>
                     </ul>               
                 </div><!--/.nav-collapse -->

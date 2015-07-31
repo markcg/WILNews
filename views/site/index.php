@@ -11,6 +11,7 @@
             <div style="text-align: center;"><input type="text" name="city" placeholder="Search for city weather"></div>
             <div><img src="/img/twitterbanner.png" alt=""></div>
             <div class="text-left" style="padding: 5px 0;border-bottom: solid 1px black;">
+                <div class="alert alert-info" role="alert">CLICK AT THESE LINK TO VIEW THE NEWS</div>
                 <?php
                 if (empty($trends[0]->trends)) {
                     echo "No result found";

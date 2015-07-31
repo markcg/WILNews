@@ -1,17 +1,19 @@
-var geocoder;
-var wilnewsSystem = {
-    interval: 5000,
+var geocoder; //Provide a variable for storing geocoder
+var wilnewsSystem = { //Create Javascript object which has attributes and functions
+    interval: 5000, //Interval for refreshing page
+    //Specific element name that will use for refernece
     chatBox: '#chatBox',
     inputBox: '#inputBox',
     newsBox: '#newsBox',
     tweetBox: '#tweetBox',
+    //Coordinate base on lattitude and longtitude for tracking system
     coordinate: {
         lat: "",
         lng: ""
     },
     currentId: null,
     userIp: null,
-    initialize: function () {
+    initialize: function () {    //Function for set up ajax system for this website
         $(".tweet-link").click(function () {
             wilnewsSystem.getTweet($(this).data().tweet);
             wilnewsSystem.getNews($(this).data().tweet);
@@ -25,7 +27,7 @@ var wilnewsSystem = {
         addWeather(wilnewsSystem.coordinate.lat, wilnewsSystem.coordinate.lng);
         geocoder = new google.maps.Geocoder();
     },
-    startChat: function () {
+    startChat: function () {    //Function for set up chat system
         $.ajax({
             url: "/api/chat/get/all",
             method: "GET",
@@ -49,14 +51,15 @@ var wilnewsSystem = {
             window.setInterval(wilnewsSystem.getDiscuss, 3000);
         });
     },
-    getNews: function (k) {
-        $.ajax({
+    //API calling section
+    getNews: function (k) {//Ajax news from server and apply to following element
+        $.ajax({ // Make an ajax call to server
             url: "/api/news/get",
             method: "GET",
             data: {k: k},
             dataType: "json",
         }).done(function (data) {
-            $(wilnewsSystem.newsBox).empty();
+            $(wilnewsSystem.newsBox).empty(); // Clear space inside element, make room for new data
             if (data.channel.item !== undefined) {
                 if ($.isArray(data.channel.item)) {
                     $.each(data.channel.item, function (index, value) {
@@ -70,7 +73,7 @@ var wilnewsSystem = {
             }
         });
     },
-    getTweet: function (q) {
+    getTweet: function (q) {//Ajax tweet from server and apply to following element
         $.ajax({
             url: "/api/tweet/get",
             method: "GET",
@@ -88,7 +91,7 @@ var wilnewsSystem = {
 
         });
     },
-    getDiscuss: function () {
+    getDiscuss: function () {//Ajax discuss comment from server and apply to following element
         $.ajax({
             url: "/api/chat/get/" + wilnewsSystem.currentId,
             method: "GET",
@@ -109,7 +112,7 @@ var wilnewsSystem = {
             }
         });
     },
-    postDiscuss: function () {
+    postDiscuss: function () { // Post new comment into server
         $.ajax({
             url: "/api/chat/post",
             method: "POST",
@@ -125,25 +128,25 @@ var wilnewsSystem = {
     }
 };
 var x = document.getElementById("demo");
-function getLocation() {
+function getLocation() { // Aquire Geocoder from user using HTML 5 function
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(showPosition);
     } else {
         x.innerHTML = "Geolocation is not supported by this browser.";
     }
 }
-function showPosition(position) {
+function showPosition(position) { //Save lat and lng attribute 
     wilnewsSystem.coordinate.lat = position.coords.latitude;
     wilnewsSystem.coordinate.lng = position.coords.longitude;
 }
-function addWeather(lat, lng) {
+function addWeather(lat, lng) { // A template for weather field
     $('#weather').append('<div style="width:500px;">'
             + '<iframe id="forecast_embed" '
             + 'type="text/html" frameborder="0" height="245" width="500" '
             + 'src="http://forecast.io/embed/#lat=' + lat + '&lon=' + lng + '&color=#00aaff&font=Georgia&units=uk">'
             + '</iframe></div>');
 }
-function cityToGeocoding() {
+function cityToGeocoding() { // Function to translate city name to Geocoder using Google API
     $.ajax({
         url: "https://maps.googleapis.com/maps/api/geocode/json",
         method: "GET",
